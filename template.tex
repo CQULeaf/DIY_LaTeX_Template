@@ -1,0 +1,80 @@
+% template.tex
+
+% 引入必要的包
+\usepackage{amsmath, amssymb, amsfonts, amsthm}  % AMS 提供的数学排版增强工具，支持公式、符号、定理环境等
+\usepackage{graphicx} % 插入图片
+\usepackage{geometry} % 自定义页面边距
+\usepackage{fancyhdr} % 自定义页眉页脚
+\usepackage{titlesec} % 自定义章节标题格式
+\usepackage{hyperref} % 生成超链接（目录、引用、网址等）
+\usepackage{xcolor} % 支持彩色文字和图形
+\usepackage{listings} % 排版代码块
+\usepackage{booktabs} % 绘制高质量表格
+\usepackage{caption} % 自定义图表标题样式
+\usepackage{enumitem} % 自定义列表（itemize/enumerate）间距和符号
+\usepackage{tcolorbox} % 用于创建带颜色、阴影的文本框
+\usepackage{eso-pic} % 在页面底层添加元素
+\usepackage{fontawesome5} % 使用 Font Awesome 图标（如 GitHub 图标）
+\usepackage{tocloft} % 自定义目录（ToC）、图表目录样式
+
+% 文献引用
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}  
+\addbibresource{references.bib}  % 引入 references.bib 文件
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+
+% 设置图片目录
+\graphicspath{{Figures/}}
+
+% 定义颜色
+\definecolor{blackk}{HTML}{0d0d0d}
+\definecolor{cyan}{rgb}{0.0, 1.0, 1.0}          % 青色
+\definecolor{lightblue}{rgb}{0.68, 0.85, 0.9}   % 浅蓝色
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}     % 墨绿色
+\definecolor{brownyellow}{rgb}{0.76, 0.60, 0.42} % 棕黄色
+
+% 页面布局设置
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+% 修改目录的字体颜色为黑色
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,  % 将目录超链接设置为黑色
+    urlcolor=magenta,
+    citecolor=black,
+    pdfborder={0 0 0}
+}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+\fancyfoot[R]{\href{https://github.com/CQULeaf}{\faGithub\ CQULeaf}}
+
+% 代码高亮设置
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true
+}
+
+% 设置自定义样式的定理框
+\tcbuselibrary{theorems}
+% 定义定理的样式
+\newtcolorbox{dl}[1][]{colback=red!5!white,colframe=red!75!black,
+    fonttitle=\bfseries,title=定理, #1}
+
+% 定义定义的样式
+\newtcolorbox{dy}[1][]{colback=green!5!white,colframe=green!75!black,
+    fonttitle=\bfseries,title=定义, #1}
+
+% 定义公式的样式
+\newtcolorbox{gs}[1][]{colback=blue!5!white,colframe=blue!75!black,
+    fonttitle=\bfseries,title=公式, #1}
