@@ -1,15 +1,57 @@
 \section{彩色信息框示例}
 
-\begin{dy}
-    定义内容
-\end{dy}
+\begin{definition}{向量空间}{vector_space}
+  设 $\mathbb{F}$ 为实数域 $\mathbb{R}$ 或复数域 $\mathbb{C}$。一个非空集合 $V$ 若满足加法与数乘封闭，并满足八条公理，则称 $V$ 为 $\mathbb{F}$ 上的向量空间。
+\end{definition}
 
-\begin{dl}
-    定理内容
-\end{dl}
+\begin{theorem}{线性回归的闭式解}{normal_equation}
+  给定数据矩阵 $\mathbf{X} \in \mathbb{R}^{n \times d}$ 和标签向量 $\mathbf{y} \in \mathbb{R}^n$，若 $\mathbf{X}^\top \mathbf{X}$ 可逆，则最小二乘解为：
+  \[
+    \mathbf{w}^* = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}.
+  \]
+\end{theorem}
 
-\begin{gs}
-    公式内容
-\end{gs}
+\begin{example}{在 PyTorch 中验证梯度}{pytorch_grad}
+  使用自动微分计算 $f(x) = x^2$ 在 $x=3$ 处的导数：
+  \begin{lstlisting}[language=Python]
+import torch
+x = torch.tensor(3.0, requires_grad=True)
+y = x ** 2
+y.backward()
+print(x.grad)  # 输出: tensor(6.)
+  \end{lstlisting}
+  结果与解析解 $f'(x) = 2x = 6$ 一致。
+\end{example}
+
+% 在后续内容中引用
+如 \ref{thm:normal_equation} 所示，线性模型具有解析解……
+
+\begin{theorem}{梯度下降收敛性（简化版）}{gd_convergence}
+  设 $f: \mathbb{R}^d \to \mathbb{R}$ 为 $L$-光滑且 $\mu$-强凸函数，梯度下降以步长 $\eta = \frac{1}{L}$ 更新：
+  \[
+    \mathbf{x}_{k+1} = \mathbf{x}_k - \eta \nabla f(\mathbf{x}_k),
+  \]
+  则函数值误差以线性速率收敛：
+  \[
+    f(\mathbf{x}_k) - f(\mathbf{x}^*) \leq \left(1 - \frac{\mu}{L}\right)^k \big(f(\mathbf{x}_0) - f(\mathbf{x}^*)\big).
+  \]
+\end{theorem}
+
+\begin{proof}
+  由 $L$-光滑性，有：
+  \[
+    f(\mathbf{y}) \leq f(\mathbf{x}) + \nabla f(\mathbf{x})^\top (\mathbf{y} - \mathbf{x}) + \frac{L}{2} \|\mathbf{y} - \mathbf{x}\|^2.
+  \]
+  代入 $\mathbf{y} = \mathbf{x}_{k+1}$, $\mathbf{x} = \mathbf{x}_k$，并利用 $\eta = 1/L$，可得：
+  \[
+    f(\mathbf{x}_{k+1}) \leq f(\mathbf{x}_k) - \frac{1}{2L} \|\nabla f(\mathbf{x}_k)\|^2.
+  \]
+  再由 $\mu$-强凸性：$\|\nabla f(\mathbf{x}_k)\|^2 \geq 2\mu \big(f(\mathbf{x}_k) - f(\mathbf{x}^*)\big)$，  
+  联立即得：
+  \[
+    f(\mathbf{x}_{k+1}) - f(\mathbf{x}^*) \leq \left(1 - \frac{\mu}{L}\right) \big(f(\mathbf{x}_k) - f(\mathbf{x}^*)\big).
+  \]
+  递推 $k$ 次即证。
+\end{proof}
 
 \newpage

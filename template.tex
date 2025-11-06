@@ -16,6 +16,8 @@
 \usepackage{eso-pic} % 在页面底层添加元素
 \usepackage{fontawesome5} % 使用 Font Awesome 图标（如 GitHub 图标）
 \usepackage{tocloft} % 自定义目录（ToC）、图表目录样式
+\usepackage{background} % 添加背景
+\usepackage{varwidth} % 创建“可变宽度盒子”
 
 % 文献引用
 \usepackage[utf8]{inputenc}
@@ -25,13 +27,6 @@
 
 % 设置图片目录
 \graphicspath{{Figures/}}
-
-% 定义颜色
-\definecolor{blackk}{HTML}{0d0d0d}
-\definecolor{cyan}{rgb}{0.0, 1.0, 1.0}          % 青色
-\definecolor{lightblue}{rgb}{0.68, 0.85, 0.9}   % 浅蓝色
-\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}     % 墨绿色
-\definecolor{brownyellow}{rgb}{0.76, 0.60, 0.42} % 棕黄色
 
 % 页面布局设置
 \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
@@ -65,16 +60,72 @@
     breaklines=true
 }
 
-% 设置自定义样式的定理框
-\tcbuselibrary{theorems}
-% 定义定理的样式
-\newtcolorbox{dl}[1][]{colback=red!5!white,colframe=red!75!black,
-    fonttitle=\bfseries,title=定理, #1}
+% -- 加载 tcolorbox 高级库 --
+\tcbuselibrary{breakable, theorems, skins}
 
-% 定义定义的样式
-\newtcolorbox{dy}[1][]{colback=green!5!white,colframe=green!75!black,
-    fonttitle=\bfseries,title=定义, #1}
+% 定义颜色
+\definecolor{TheoremColor}{RGB}{34,139,34}    % 深绿（定理）
+\definecolor{DefColor}{RGB}{45,52,151}        % 深蓝（定义）
+\definecolor{ExampleColor}{RGB}{226,135,67}   % 橙色（例子）
+\definecolor{ProofColor}{RGB}{34,139,34}      % 证明用绿
 
-% 定义公式的样式
-\newtcolorbox{gs}[1][]{colback=blue!5!white,colframe=blue!75!black,
-    fonttitle=\bfseries,title=公式, #1}
+% -- 定理环境（编号 1.1, 1.2...）--
+\newtcbtheorem[number within=section]{theorem}{Theorem}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=TheoremColor!50!white,
+  coltitle=TheoremColor!50!black,
+  colbacktitle=TheoremColor!15!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{TheoremColor!15!white},
+  borderline={0.5mm}{0pt}{TheoremColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{thm}
+
+% -- 定义环境 --
+\newtcbtheorem[number within=section]{definition}{Definition}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=DefColor!50!white,
+  coltitle=DefColor!50!black,
+  colbacktitle=DefColor!15!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{DefColor!15!white},
+  borderline={0.5mm}{0pt}{DefColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{def}
+
+% -- 例子环境 --
+\newtcbtheorem[number within=section]{example}{Example}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=ExampleColor!50!white,
+  coltitle=ExampleColor!50!black,
+  colbacktitle=ExampleColor!15!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{ExampleColor!15!white},
+  borderline={0.5mm}{0pt}{ExampleColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{ex}
+
+% -- 证明环境 --
+\tcolorboxenvironment{proof}{
+  blanker,
+  breakable,
+  left=5mm,
+  before skip=10pt,
+  after skip=10pt,
+  borderline west={1mm}{0pt}{ProofColor!50!white}
+}
+
+% 添加背景
+\backgroundsetup{scale=0.4, angle=0, opacity = 1,contents = {\includegraphics[width=\paperwidth, height=\paperwidth, keepaspectratio]{Figures/CQU-Logo.png}}}
