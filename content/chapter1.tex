@@ -1,0 +1,107 @@
+% 第一章：正文内容示例
+\section{正文示例章节}
+
+这是一个简单的正文内容展示。你可以看到，普通文本使用的是默认的字号和对齐方式。你可以自由添加内容并调整格式。
+
+\subsection{子章节标题}
+
+这是一个子章节的内容展示。你可以在这里添加更多详细的文本内容，或者分段介绍不同的主题。
+
+\subsection{列表示例}
+
+这里是无序列表和有序列表的示例：
+
+\paragraph{无序列表}
+\begin{itemize}
+    \item 项目 1
+    \item 项目 2
+    \item 项目 3
+\end{itemize}
+
+\paragraph{有序列表}
+\begin{enumerate}
+    \item 第一项
+    \item 第二项
+    \item 第三项
+\end{enumerate}
+
+\subsection{英文字体展示}
+
+The font I chose is Palatino, a classic serif font designed by German type designer Hermann Zapf in 1948. 
+Compared to \textit{Times New Roman}, Palatino has softer stroke contrasts and a more open character layout, making it less compact and serious, resulting in a more comfortable reading experience.
+
+\subsection{三线表示例}
+
+这是一个简单的三线表展示：
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption{Notations}
+    \begin{tabular}{m{2cm} m{11.6cm}}
+      \toprule[2pt]
+      \multicolumn{1}{m{2.7cm}}{\centering Symbol}
+      & \multicolumn{1}{m{12cm}}{\centering Description} \\
+      \midrule
+      $\mathcal{S}$ & State space of the embodied agent \\
+      \vspace{2pt}
+      $\mathcal{A}$ & Discrete action space \\
+      \vspace{2pt}
+      $T(s' \mid s, a)$ & State transition function \\
+      \vspace{2pt}
+      $R(s, a)$ & Reward function (negative distance to goal) \\
+      \vspace{2pt}
+      $\gamma$ & Discount factor, $\gamma \in (0,1)$ \\
+      \vspace{2pt}
+      $V(s)$ & Value function of state $s$ \\
+      \vspace{2pt}
+      $\pi(s)$ & Policy mapping states to actions \\
+      \vspace{2pt}
+      $V^*$ & Optimal value function \\
+      \vspace{2pt}
+      $\pi^*$ & Optimal policy \\
+      \vspace{2pt}
+      $\theta$ & Convergence threshold for value iteration \\
+      \vspace{2pt}
+      $\Delta$ & Maximum change in value function during iteration \\
+      \vspace{3pt}
+      $s_{\text{goal}}$ & Target position in the environment \\
+      \vspace{3pt}
+      $s_{\text{pos}}$ & Current position of the agent \\
+      
+      \bottomrule[2pt]
+    \end{tabular}
+    \label{tab:notation}
+    
+    \begin{tablenotes}
+      \footnotesize
+      \item[*] *There are some variables that are not listed here and will be discussed in detail in each section.
+    \end{tablenotes}
+  \end{center}
+\end{table}
+
+
+\subsection{伪代码示例}
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon
+  \caption{Value Iteration Algorithm for Embodied Navigation}
+  \KwIn{EMDP $\langle \mathcal{S}, \mathcal{A}, T, R, \gamma \rangle$, convergence threshold $\theta$}
+  \KwOut{Optimal value function $V^*$ and policy $\pi^*$}
+  \BlankLine
+  \SetAlgoLined
+  Initialize $V(s) \gets 0$ for all $s \in \mathcal{S}$\;
+  \Repeat{$\Delta < \theta$}{
+    $\Delta \gets 0$\;
+    \For{each $s \in \mathcal{S}$}{
+      $v \gets V(s)$\;
+      $V(s) \gets \max_{a \in \mathcal{A}} \left[ R(s, a) + \gamma \sum_{s'} T(s' \mid s, a) V(s') \right]$\;
+      $\Delta \gets \max(\Delta, |v - V(s)|)$\;
+    }\tcc*[r]{end for each state}
+  }\tcc*[r]{end repeat}
+  \For{each $s \in \mathcal{S}$}{
+    $\pi^*(s) \gets \arg\max_{a \in \mathcal{A}} \left[ R(s, a) + \gamma \sum_{s'} T(s' \mid s, a) V^*(s') \right]$\;
+  }\tcc*[r]{end for policy extraction}
+  \Return{$V^*, \pi^*$}
+\end{algorithm}
+
+\newpage

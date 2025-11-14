@@ -1,0 +1,49 @@
+% 页面布局设置
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+% 引用文献设置
+\addbibresource{bib/references.bib}
+
+% 配置超链接颜色
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=magenta,
+    citecolor=black,
+    pdfborder={0 0 0}
+}
+
+% 设置西文字体：Palatino 风格
+\setmainfont{TeX Gyre Pagella}[
+  Ligatures = TeX
+]
+\setsansfont{TeX Gyre Heros}[
+  Scale = 0.92
+]
+\setmonofont{Consolas}[
+  Scale = MatchLowercase
+]
+\setmathfont{TeX Gyre Pagella Math}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+\fancyfoot[R]{\href{https://github.com/CQULeaf}{\faGithub\ CQULeaf}}
+
+% 代码高亮设置
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true
+}
+
+% 添加背景
+\backgroundsetup{scale=0.4, angle=0, opacity = 1,contents = {\includegraphics[width=\paperwidth, height=\paperwidth, keepaspectratio]{assets/figures/CQU-Logo.png}}}

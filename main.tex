@@ -1,19 +1,24 @@
-\documentclass[a4paper,12pt]{ctexart}
+\documentclass[UTF8,12pt]{ctexart}
 
-% Load template configuration
-\input{template}
+% ====== 加载配置 ======
+\input{config/packages}
+\input{config/styles}
+\input{config/macros}
 
+% ====== 正文开始 ======
 \begin{document}
 
-% Document content
-\input{cover}
+% 封面
+\input{content/cover}
 
-\input{chapter1}
-\input{chapter2}
-\input{chapter3}
-\input{chapter4}
-\input{chapter5}
+% 正文内容
+\input{content/chapter1}
+\input{content/chapter2}
+\input{content/chapter3}
+\input{content/chapter4}
+\input{content/chapter5}
 
-\input{references}
+% 参考文献
+\printbibliography[title={参考文献}]
 
 \end{document}
