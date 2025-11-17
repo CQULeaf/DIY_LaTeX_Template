@@ -1,6 +1,6 @@
 \section{彩色信息框示例}
 
-\begin{definition}{具身马尔可夫决策过程（EMDP）}
+\begin{definition}{具身马尔可夫决策过程（EMDP）}{}
 一个具身马尔可夫决策过程定义为五元组 $\langle \mathcal{S}, \mathcal{A}, T, R, \gamma \rangle$，其中：
 \begin{itemize}[left=0pt]
   \item $\mathcal{S} = \mathbb{R}^2 \times [0, 2\pi)$ 为状态空间（位置 + 朝向）；
@@ -11,35 +11,35 @@
 \end{itemize}
 \end{definition}
 
-\begin{assumption}{可观测性}
+\begin{assumption}{可观测性}{}
 智能体在每一步都能精确观测当前状态 $s_t \in \mathcal{S}$。
 \end{assumption}
 
-\begin{assumption}{确定性动力学}
+\begin{assumption}{确定性动力学}{}
 状态转移是确定性的，即 $s_{t+1} = f(s_t, a_t)$，无环境噪声。
 \end{assumption}
 
 该算法的正确性由以下定理保证。
 
-\begin{lemma}{贝尔曼最优性}
+\begin{lemma}{贝尔曼最优性}{}
 值函数 $V^*$ 是贝尔曼最优算子 $\mathcal{T}$ 的唯一不动点，即 $V^* = \mathcal{T} V^*$，其中
 \[
 \mathcal{T} V(s) \coloneqq \max_{a \in \mathcal{A}} \left[ R(s, a) + \gamma \sum_{s'} T(s' \mid s, a) V(s') \right].
 \]
 \end{lemma}
 
-\begin{theorem}{值迭代收敛性}
-在 \cref{asm:observability,asm:deterministic} 下，值迭代算法生成的序列 $\{V_k\}$ 以指数速率收敛到 $V^*$，即
+\begin{theorem}{值迭代收敛性}{}
+值迭代算法生成的序列 $\{V_k\}$ 以指数速率收敛到 $V^*$，即
 \[
 \| V_k - V^* \|_\infty \leq \frac{2 \gamma^k}{1 - \gamma} \| V_1 - V_0 \|_\infty.
 \]
 \end{theorem}
 
-\begin{proof}
+\begin{proof}{}
 由于状态空间 $\mathcal{S}$ 在假设下为有限（或可离散化），且 $\gamma < 1$，贝尔曼算子 $\mathcal{T}$ 是 $\gamma$-压缩映射。由巴拿赫不动点定理，迭代 $V_{k+1} = \mathcal{T} V_k$ 收敛到唯一不动点 $V^*$，且误差界如上所述。
 \end{proof}
 
-\begin{example}{2D 网格世界导航}
+\begin{example}{2D 网格世界导航}{}
 考虑一个 $5 \times 5$ 的网格世界，机器人从左下角 $(0,0)$ 出发，目标为右上角 $(4,4)$。状态 $s = (x, y, \theta)$，其中 $\theta \in \{0, \pi/2, \pi, 3\pi/2\}$。动作 $\mathcal{A} = \{\text{前进}, \text{左转}, \text{右转}\}$ 控制朝向与位置。在 \cref{asm:observability} 下，值迭代可精确计算到达目标的最短路径。
 \end{example}
 
