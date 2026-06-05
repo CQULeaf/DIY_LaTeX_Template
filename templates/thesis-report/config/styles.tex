@@ -1,0 +1,125 @@
+% 章节标题与正文基础设置
+\setstretch{1}
+\raggedbottom
+\setlength{\parindent}{2em}
+\newcommand{\thesisbodyfont}{\songti\fontsize{12pt}{20pt}\selectfont}
+
+\titleformat{\section}{\heiti\zihao{3}\centering}{\thesection}{0.5em}{}[]
+\titlespacing{\section}{0pt}{\baselineskip}{\baselineskip}
+\titleformat{\subsection}{\heiti\zihao{-3}}{\thesubsection}{0.5em}{}[]
+\titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
+\titleformat{\subsubsection}{\heiti\zihao{4}}{\thesubsubsection}{0.5em}{}[]
+\titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+
+\newif\ifthesisskiptablefont
+\AtBeginEnvironment{tabular}{\ifthesisskiptablefont\else\zihao{5}\fi}
+\AtBeginEnvironment{tabular*}{\ifthesisskiptablefont\else\zihao{5}\fi}
+
+% 目录样式
+\newcommand{\thesistocsectionfont}{\heiti\fontsize{14pt}{20pt}\selectfont}
+\newcommand{\thesistocsubsectionfont}{\heiti\fontsize{10.5pt}{20pt}\selectfont}
+\newcommand{\thesistocsubsubsectionfont}{\songti\fontsize{10.5pt}{20pt}\selectfont}
+
+\titlecontents{section}[0pt]{\addvspace{0pt}\filright\thesistocsectionfont}
+               {\contentspush{\thecontentslabel \quad}}
+               {}
+               {\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsection}[1em]{\addvspace{0pt}\filright\thesistocsubsectionfont}
+               {\contentspush{\thecontentslabel \quad}}
+               {}
+               {\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsubsection}[2em]{\addvspace{0pt}\filright\thesistocsubsubsectionfont}
+               {\contentspush{\thecontentslabel \quad}}
+               {}
+               {\titlerule*[8pt]{.}\contentspage}
+
+% 公共文字与页眉页脚设置
+\newcommand{\thesisheadertext}{\songti\zihao{-5} 重庆大学本科学生毕业论文（设计）}
+\newcommand{\thesismaintitlecn}{XXX计算方法的研究}
+\newcommand{\checkedbox}{\mbox{$\Box\kern-0.7em\checkmark$}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CE]{\thesisheadertext}
+\fancyhead[CO]{\songti\zihao{-5}\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[CE]{\thesisheadertext}
+  \fancyhead[CO]{\songti\zihao{-5}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+
+\makeatletter
+\renewcommand{\cleardoublepage}{%
+  \clearpage
+  \if@twoside
+    \ifodd\c@page
+    \else
+      \null
+      \thispagestyle{empty}%
+      \newpage
+      \if@twocolumn
+        \null
+        \newpage
+      \fi
+    \fi
+  \fi
+}
+\makeatother
+
+\newcommand{\thesisfrontmatterpage}[1]{%
+  \clearpage
+  \pagestyle{fancy}%
+  \phantomsection
+  \markboth{#1}{}%
+  \thispagestyle{fancy}%
+}
+
+\newcommand{\thesischapterpage}[1]{%
+  \cleardoublepage
+  \pagestyle{fancy}%
+  \phantomsection
+  \markboth{#1}{}%
+  \thispagestyle{fancy}%
+}
+
+% 链接颜色设置
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=black,
+  urlcolor=black
+}
+\urlstyle{same}
+
+% 伪代码样式
+\renewcommand{\algorithmcfname}{算法}
+\RestyleAlgo{ruled}
+\SetAlgoLined
+\SetAlgoCaptionSeparator{：}
+\SetKwInOut{KwIn}{输入}
+\SetKwInOut{KwOut}{输出}
+\SetKwInput{KwHyper}{超参数}
+\SetKwInput{KwInit}{初始化}
+\SetKwInput{KwFreeze}{冻结}
+\SetKw{KwReturn}{返回}
+\SetAlgoNlRelativeSize{-2}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small\bfseries}
+\SetAlCapSkip{0.4em}
+\SetAlgoInsideSkip{smallskip}
+\SetNlSkip{0.35em}
+\SetInd{0.5em}{1em}
+\IncMargin{0.8em}

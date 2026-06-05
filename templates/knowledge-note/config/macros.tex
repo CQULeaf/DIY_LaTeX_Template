@@ -1,0 +1,112 @@
+% ========== 颜色 ==========
+\definecolor{DefColor}{RGB}{0, 128, 128}        % 定义，青色
+\definecolor{AssumpColor}{RGB}{128, 0, 128}     % 假设，紫色
+\definecolor{TheoremColor}{RGB}{139, 0, 0}      % 定理、引理、命题，深红
+\definecolor{ExampleColor}{RGB}{255, 140, 0}    % 例子，橙色
+\definecolor{ProofColor}{RGB}{80, 80, 80}       % 证明，灰色
+
+% ========== 定义 ==========
+\newtcbtheorem[number within=section]{definition}{定义}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=DefColor!50!white,
+  coltitle=DefColor!90!white,
+  colbacktitle=DefColor!10!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{DefColor!10!white},
+  borderline={0.5mm}{0pt}{DefColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{def}
+
+% ========== 假设 ==========
+\newtcbtheorem[number within=section]{assumption}{假设}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=AssumpColor!50!white,
+  coltitle=AssumpColor!90!white,
+  colbacktitle=AssumpColor!10!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{AssumpColor!10!white},
+  borderline={0.5mm}{0pt}{AssumpColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{asm}
+
+% ========== 定理 ==========
+\newtcbtheorem[number within=section]{theorem}{定理}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=TheoremColor!50!white,
+  coltitle=TheoremColor!90!white,
+  colbacktitle=TheoremColor!10!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{TheoremColor!10!white},
+  borderline={0.5mm}{0pt}{TheoremColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{thm}
+
+% ========== 引理 ==========
+\newtcbtheorem[number within=section]{lemma}{引理}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=TheoremColor!50!white,
+  coltitle=TheoremColor!90!white,
+  colbacktitle=TheoremColor!10!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{TheoremColor!10!white},
+  borderline={0.5mm}{0pt}{TheoremColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{lem}
+
+% ========== 命题 ==========
+\newtcbtheorem[number within=section]{proposition}{命题}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=TheoremColor!50!white,
+  coltitle=TheoremColor!90!white,
+  colbacktitle=TheoremColor!10!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{TheoremColor!10!white},
+  borderline={0.5mm}{0pt}{TheoremColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{prop}
+
+% ========== 例子 ==========
+\newtcbtheorem[number within=section]{example}{例子}{
+  enhanced,
+  frame empty, interior empty,
+  colframe=ExampleColor!50!white,
+  coltitle=ExampleColor!90!black,
+  colbacktitle=ExampleColor!15!white,
+  fonttitle=\bfseries,
+  borderline={0.5mm}{0pt}{ExampleColor!15!white},
+  borderline={0.5mm}{0pt}{ExampleColor!50!white,dashed},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+  boxed title style={boxrule=0.4pt},
+  varwidth boxed title,
+  breakable
+}{ex}
+
+% ========== 证明 ==========
+\tcolorboxenvironment{proof}{
+  blanker,
+  breakable,
+  left=5mm,
+  before skip=10pt,
+  after skip=10pt,
+  borderline west={1mm}{0pt}{ProofColor!50!white}
+}

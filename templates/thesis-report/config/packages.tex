@@ -1,0 +1,50 @@
+% 文档类
+\documentclass[UTF8,a4paper,12pt,twoside]{ctexart}
+
+% 页面布局
+\usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=4cm, bindingoffset=10mm, headheight=16mm]{geometry}
+
+% 数学相关宏包
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+% 编号设置
+\numberwithin{equation}{section}
+\allowdisplaybreaks[4]
+\usepackage{chngcntr}
+
+% 表格和图片
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage[font=small,labelsep=none]{caption}
+\captionsetup{font={small},labelsep=quad}
+
+% 字体设置
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+\usepackage{color}
+
+% 页面风格
+\usepackage{fancyhdr}
+
+% 参考文献与链接
+\usepackage[super,sort&compress]{natbib}
+\bibpunct{[}{]}{,}{s}{}{,}
+\usepackage[hypertexnames=false]{hyperref}
+
+% 其他宏包
+\usepackage{appendix}
+\usepackage{tocloft}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{xeCJKfntef}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}

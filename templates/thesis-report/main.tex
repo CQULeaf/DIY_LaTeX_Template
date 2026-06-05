@@ -1,0 +1,62 @@
+% !TEX root = main.tex
+% 重庆大学本科毕业论文（设计）LaTeX 工程
+% 主文件
+
+% ==================== 宏包配置 ====================
+\input{config/packages}
+
+% ==================== 格式设置 ====================
+\input{config/styles}
+
+% ==================== 正文部分 ====================
+\begin{document}
+
+% 图片、表格和算法编号格式
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{algocf}{section}
+\renewcommand{\thealgocf}{\thesection{}.\arabic{algocf}}
+
+% 封面
+\input{content/cover}
+
+% 英文封面
+\input{content/cover_en}
+
+% 中文摘要
+\input{content/abstract}
+
+% 英文摘要
+\input{content/abstract_en}
+
+% 目录
+\input{content/toc}
+
+% 第一章 绪论
+\input{content/chapter1}
+
+% 第二章 正文文字格式
+\input{content/chapter2}
+
+% 第三章 图表、公式格式
+\input{content/chapter3}
+
+% 第四章 结论
+\input{content/chapter4}
+
+% 第五章 研究展望
+\input{content/chapter5}
+
+% 参考文献
+\input{content/references}
+
+% 附录
+\input{content/appendix}
+
+% 致谢
+\input{content/acknowledgements}
+
+% 原创性声明
+\input{content/declaration}
+
+\end{document}
