@@ -1,4 +1,4 @@
-# LaTeX generated files to ignore
+# LaTeX generated files
 *.aux
 *.lof
 *.log
@@ -40,14 +40,24 @@
 *.ind
 *.tdo
 *.bcf
+*.run.xml
+*.xdv
 *.xml
-# Exclude .pdf files if you don't want to track them
-# *.pdf
-# Exclude TeXstudio project files
 *.synctex(busy)
 *.synctex.gz(busy)
 *.pdfsync
-# Exclude VSCode project files
+
+# Tool-specific build caches
+_minted-*/
+*.pyg
+*.listing
+
+# Editor and workspace files
 *.code-workspace
-# Exclude output directory
+.vscode/
+.idea/
+
+# Common output directories
 /out/
+**/out/
+**/build/
