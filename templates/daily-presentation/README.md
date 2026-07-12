@@ -1,12 +1,17 @@
 # Daily Presentation Beamer Template
 
-A minimal XeLaTeX Beamer template for group meetings, research updates, course presentations, and short project reports.
+A complete XeLaTeX Beamer example for group meetings, research updates, course presentations, and short project reports. The included talk is based on the July 11, 2026 group-meeting presentation.
 
 ## Files
 
 ```text
 daily-presentation/
+├── assets/
+│   ├── figures/
+│   └── videos/
 ├── main.tex
+├── main.pdf
+├── speaker-notes.md
 ├── collegeBeamer.sty
 ├── src/
 │   └── CQU/
@@ -24,13 +29,13 @@ Compile with XeLaTeX:
 latexmk -xelatex main.tex
 ```
 
-Edit the reusable metadata block at the top of `main.tex`:
+Replace the example content as needed, starting with the reusable metadata block at the top of `main.tex`:
 
 ```latex
 \newcommand{\PresenterName}{Yexuhang Ye}
-\newcommand{\PresenterSchool}{Chongqing University}
-\newcommand{\PresentationTopic}{Robotics Learning\\and Control}
-\newcommand{\PresentationSubtitle}{Progress, Open Questions, and Next Steps}
+\newcommand{\PresenterSchool}{JingLab, Chongqing University}
+\newcommand{\PresentationTopic}{Robot Learning and Control\\Group Meeting Report}
+\newcommand{\PresentationSubtitle}{Thesis Progress and Research Plan}
 ```
 
 Use `\\` in a long title to control the line break on the cover slide. Keep the optional short title in `\title[...]` on one line for PDF metadata and navigation.
